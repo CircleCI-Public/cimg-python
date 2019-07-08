@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+repository=python
+parent=base
+variants=(node)
