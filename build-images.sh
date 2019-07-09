@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build --file 2.7/Dockerfile -t cimg/python:2.7.16  -t cimg/python:2.7 .
+docker build --file 3.4/Dockerfile -t cimg/python:3.4.10  -t cimg/python:3.4 .
