@@ -1,0 +1,22 @@
+# vim:set ft=dockerfile:
+
+FROM cimg/base:2019.07
+
+LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV PATH /root/.pyenv/bin:$PATH
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+		git ca-certificates curl \
+		libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev \
+		libxml2-dev libxmlsec1-dev libffi-dev \
+		ca-certificates && \
+	curl https://pyenv.run | bash && \
+	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+	echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+
+RUN pyenv install 2.7.16 && pyenv global 2.7.16
+
+WORKDIR /root/project
