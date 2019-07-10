@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
 		libreadline-dev \
 		libffi-dev \
 		libsqlite3-dev \
-		libssl-dev \
+		#libssl-dev \
+		libssl1.0-dev \
 		libxml2-dev \
 		libxmlsec1-dev \
 		llvm \
