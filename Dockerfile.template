@@ -1,10 +1,9 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/%%PARENT%%:2019.07
+FROM cimg/%%PARENT%%:2019.10
 
 LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV PATH /root/.pyenv/bin:$PATH
 
 RUN apt-get update && apt-get install -y \
