@@ -1,10 +1,9 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2019.07
+FROM cimg/base:2019.10
 
 LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV PATH /root/.pyenv/bin:$PATH
 
 RUN apt-get update && apt-get install -y \
@@ -33,6 +32,6 @@ RUN apt-get update && apt-get install -y \
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 	echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 
-RUN pyenv install 3.7.4 && pyenv global 3.7.4
+RUN pyenv install 3.7.5 && pyenv global 3.7.5
 
 WORKDIR /root/project
