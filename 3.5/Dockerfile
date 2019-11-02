@@ -32,6 +32,6 @@ RUN apt-get update && apt-get install -y \
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 	echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 
-RUN pyenv install 3.5.8 && pyenv global 3.5.8
+RUN pyenv install 3.5.9 && pyenv global 3.5.9
 
 WORKDIR /root/project
