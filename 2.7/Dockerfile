@@ -1,10 +1,11 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2019.10
+FROM cimg/base:2019.11
 
 LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
 
-ENV PATH /root/.pyenv/bin:$PATH
+ENV PVENV_ROOT=$HOME/.pyenv \
+	PATH=/root/.pyenv/shims:/root/.pyenv/bin:$PATH
 
 RUN apt-get update && apt-get install -y \
 		build-essential \
@@ -29,9 +30,11 @@ RUN apt-get update && apt-get install -y \
 		xz-utils \
 		zlib1g-dev && \
 	curl https://pyenv.run | bash && \
-	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-	echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pyenv install 2.7.17 && pyenv global 2.7.17
+
+RUN python --version && \
+	pip --version
 
 WORKDIR /root/project
