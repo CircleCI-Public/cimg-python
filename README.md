@@ -1,8 +1,8 @@
 <div align="center">
 	<p>
-		<img alt="CircleCI Logo" src="img/circle-circleci.svg" width="75" />
-		<img alt="Docker Logo" src="img/circle-docker.svg" width="75" />
-		<img alt="Python Logo" src="img/circle-python.svg" width="75" />
+		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-python/master/img/circle-circleci.svg?sanitize=true" width="75" />
+		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-python/master/img/circle-docker.svg?sanitize=true" width="75" />
+		<img alt="Python Logo" src="https://raw.github.com/CircleCI-Public/cimg-python/master/img/circle-python.svg?sanitize=true" width="75" />
 	</p>
 	<h1>CircleCI Convenience Images => Python</h1>
 	<h3>A Continuous Integration focused Python Docker image built to run on CircleCI</h3>
