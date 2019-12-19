@@ -4,7 +4,7 @@ FROM cimg/%%PARENT%%:2019.11
 
 LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
 
-ENV PVENV_ROOT=$HOME/.pyenv \
+ENV PYENV_ROOT=$HOME/.pyenv \
 	PATH=/root/.pyenv/shims:/root/.pyenv/bin:$PATH
 
 RUN apt-get update && apt-get install -y \
