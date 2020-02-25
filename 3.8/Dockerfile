@@ -1,13 +1,13 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2019.11
+FROM cimg/base:2020.01
 
-LABEL maintainer="CircleCI Community/Partner Engineering <community-partner@circleci.com>"
+LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
-ENV PVENV_ROOT=$HOME/.pyenv \
-	PATH=/root/.pyenv/shims:/root/.pyenv/bin:$PATH
+ENV PYENV_ROOT=/home/circleci/.pyenv \
+	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:$PATH
 
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
 		ca-certificates \
 		curl \
@@ -30,11 +30,9 @@ RUN apt-get update && apt-get install -y \
 		xz-utils \
 		zlib1g-dev && \
 	curl https://pyenv.run | bash && \
-	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.8.0 && pyenv global 3.8.0
+RUN pyenv install 3.8.1 && pyenv global 3.8.1
 
 RUN python --version && \
 	pip --version
-
-WORKDIR /root/project
