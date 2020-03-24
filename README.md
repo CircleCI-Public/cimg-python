@@ -53,10 +53,10 @@ The interpreter is provided via pyenv allowing you to change the Python version 
 
 ### Variants
 
-This image will have a Node.js variant in the future.
+This image has a Node.js variant.
 Variant images typically contain the same base software, but with a few additional modifications.
 The Node.js variant is the same Python image but with Node.js also installed.
-The Node.js variant will be used by appending `-node` to the end of an existing `cimg/python` tag.
+The Node.js variant can be used by appending `-node` to the end of an existing `cimg/python` tag.
 
 ### Tagging Scheme
 
@@ -72,7 +72,7 @@ If you use the minor release tag, it will automatically point to future patch up
 For example, the tag `3.7` points to Python v3.7.5 now, but when the next release comes out, it will point to Python v3.7.6.
 
 `[-variant]` - Variant tags, if available, can optionally be used.
-Once the Node.js variant is available, it could be used like this: `cimg/python:3.7-node`.
+For example, the Node.js variant could be used like this: `cimg/python:3.7-node`.
 
 
 ## Development
