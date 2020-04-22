@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 2.7.17 && pyenv global 2.7.17
+RUN pyenv install 2.7.18 && pyenv global 2.7.18
 
 RUN python --version && \
 	pip --version
