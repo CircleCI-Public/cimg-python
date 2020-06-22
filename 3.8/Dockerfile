@@ -35,4 +35,5 @@ RUN sudo apt-get update && sudo apt-get install -y \
 RUN pyenv install 3.8.3 && pyenv global 3.8.3
 
 RUN python --version && \
-	pip --version
+	pip --version && \
+	pip install pipenv

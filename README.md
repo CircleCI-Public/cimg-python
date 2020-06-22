@@ -13,7 +13,7 @@
 ***This image is in beta and is designed to supercede the original CircleCI Python image, `circleci/python`.***
 
 `cimg/python` is a Docker image created by CircleCI with continuous integration builds in mind.
-Each tag contains a complete Python version and Pip install, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+Each tag contains a complete Python version via pyenv, and both pip and pipenv pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
 
 ## Table of Contents
