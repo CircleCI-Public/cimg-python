@@ -36,4 +36,5 @@ RUN pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
 
 RUN python --version && \
 	pip --version && \
+# This installs pipenv at the latest version, currently 2020.6.2
 	pip install pipenv
