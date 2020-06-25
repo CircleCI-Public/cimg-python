@@ -18,6 +18,7 @@ Each tag contains a complete Python version via pyenv, and both pip and pipenv p
 
 ## Table of Contents
 
+- [Breaking Changes](#Breaking-changes-from-old-circleci-image)
 - [Getting Started](#getting-started)
 - [How This Image Works](#how-this-image-works)
 - [Development](#development)
@@ -25,6 +26,8 @@ Each tag contains a complete Python version via pyenv, and both pip and pipenv p
 - [Additional Resources](#additional-resources)
 - [License](#license)
 
+## Breaking changes from old circleci image
+Venv is no longer included. We suggest using the [matrix feature](https://circleci.com/blog/circleci-matrix-jobs) instead.
 
 ## Getting Started
 
