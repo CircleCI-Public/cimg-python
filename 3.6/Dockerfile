@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2020.03
+FROM cimg/base:2020.05
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
@@ -32,7 +32,9 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.6.10 && pyenv global 3.6.10
+RUN pyenv install 3.6.9 && pyenv global 3.6.9
 
 RUN python --version && \
-	pip --version
+	pip --version && \
+# This installs pipenv at the latest version, currently 2020.6.2
+	pip install pipenv
