@@ -13,7 +13,7 @@
 ***This image is in beta and is designed to supercede the original CircleCI Python image, `circleci/python`.***
 
 `cimg/python` is a Docker image created by CircleCI with continuous integration builds in mind.
-Each tag contains a complete Python version and Pip install, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+Each tag contains a complete Python version via pyenv, and both pip and pipenv pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
 
 ## Table of Contents
@@ -67,9 +67,9 @@ cimg/python:<python-version>[-variant]
 ```
 
 `<python-version>` - The version of Python to use.
-This can be a full SemVer point release (such as `3.7.5`) or just the minor release (such as `3.7`).
+This can be a full SemVer point release (such as `3.7.7`) or just the minor release (such as `3.7`).
 If you use the minor release tag, it will automatically point to future patch updates as they are released by the Python project.
-For example, the tag `3.7` points to Python v3.7.5 now, but when the next release comes out, it will point to Python v3.7.6.
+For example, the tag `3.7` points to Python v3.7.7 now, but when the next release comes out, it will point to Python v3.7.6.
 
 `[-variant]` - Variant tags, if available, can optionally be used.
 For example, the Node.js variant could be used like this: `cimg/python:3.7-node`.
@@ -112,10 +112,10 @@ git clone --recurse-submodules git@github.com:CircleCI-Public/cimg-python.git
 ### Generating Dockerfiles
 
 Dockerfiles can be generated for a specific Python version using the `gen-dockerfiles.sh` script.
-For example, to generate the Dockerfile for Python v3.7.5, you would run the following from the root of the repo:
+For example, to generate the Dockerfile for Python v3.7.7, you would run the following from the root of the repo:
 
 ```bash
-./shared/gen-dockerfiles.sh 3.7.5
+./shared/gen-dockerfiles.sh 3.7.7
 ```
 
 The generated Dockerfile will be located at `./3.7/Dockefile`.
@@ -123,8 +123,8 @@ To build this image locally and try it out, you can run the following:
 
 ```bash
 cd 3.7
-docker build -t test/python:3.7.5 .
-docker run -it test/python:3.7.5 bash
+docker build -t test/python:3.7.7 .
+docker run -it test/python:3.7.7 bash
 ```
 
 ### Building the Dockerfiles
@@ -137,6 +137,12 @@ To build the Docker images locally as this repository does, you'll want to run t
 
 This would need to be run after generating the Dockerfiles first.
 When releasing proper images for CircleCI, this script is run from a CircleCI pipeline and not locally.
+
+
+### Submitting a Pull Request
+
+Ensure all the changes to the versioned Dockerfiles and the `build-images.sh` have been reverted, leaving only the `Dockerfile.template` as the modified file. These will have been modified while testing with the sections above.
+The specific versions will be included when the images are released.
 
 ### Publishing Official Images (for Maintainers only)
 
