@@ -1,11 +1,11 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2020.05
+FROM cimg/base:2020.06
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
-	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:$PATH
+	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -32,9 +32,12 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.6.9 && pyenv global 3.6.9
+RUN pyenv install 3.6.11 && pyenv global 3.6.11
 
 RUN python --version && \
 	pip --version && \
 # This installs pipenv at the latest version, currently 2020.6.2
 	pip install pipenv
+
+# This installs version poetry at the latest version. poetry is updated about twice a month.
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
