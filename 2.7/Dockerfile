@@ -36,8 +36,8 @@ RUN pyenv install 2.7.18 && pyenv global 2.7.18
 
 RUN python --version && \
 	pip --version && \
-# This installs pipenv at the latest version, currently 2020.6.2
-	pip install pipenv
+	# This installs pipenv at the latest version, currently 2020.6.2
+	pip install pipenv wheel
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python

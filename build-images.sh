@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+docker build --file 2.7/Dockerfile -t cimg/python:2.7.17  -t cimg/python:2.7 .
+docker build --file 2.7/node/Dockerfile -t cimg/python:2.7.17-node  -t cimg/python:2.7-node .
 docker build --file 2.7/Dockerfile -t cimg/python:2.7.18  -t cimg/python:2.7 .
 docker build --file 2.7/node/Dockerfile -t cimg/python:2.7.18-node  -t cimg/python:2.7-node .
+docker build --file 3.5/Dockerfile -t cimg/python:3.5.8  -t cimg/python:3.5 .
+docker build --file 3.5/node/Dockerfile -t cimg/python:3.5.8-node  -t cimg/python:3.5-node .
 docker build --file 3.5/Dockerfile -t cimg/python:3.5.9  -t cimg/python:3.5 .
 docker build --file 3.5/node/Dockerfile -t cimg/python:3.5.9-node  -t cimg/python:3.5-node .
 docker build --file 3.6/Dockerfile -t cimg/python:3.6.10  -t cimg/python:3.6 .
