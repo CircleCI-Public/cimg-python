@@ -1,40 +1,21 @@
 version: 2.1
 
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: ./manage.py test
+          name: Test
+
 workflows:
   main:
     jobs:
-      - build:
-          context: orb-publishing
-
-jobs:
-  build:
-    docker:
-      - image: cibuilds/docker:19.03
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: "Build Docker Images"
-          command: ./build-images.sh
-      - deploy:
-          name: "Publish Docker Images (master branch only)"
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              
-              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-              
-              # an else block will be added in the future for a staging release
-              if git log -1 --pretty=%s | grep "\[release\]"; then
-                echo "Publishing cimg/python to Docker Hub production."
-                docker push cimg/python
-              else
-                echo "Skipping publishing."
-              fi
-
-              # Update the Docker Hub description
-              STUBB_VER=0.2.0
-              STUBB_URL="https://github.com/CircleCI-Public/stubb/releases/download/v${STUBB_VER}/stubb_${STUBB_VER}-linux-amd64.tar.gz"
-              curl -sSL $STUBB_URL | tar -xz -C /usr/local/bin stubb
-
-              stubb set description cimg/python ./README.md
-            fi
+      - build-and-test
