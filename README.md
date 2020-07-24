@@ -48,15 +48,28 @@ You can now use Python within the steps for this job.
 
 ## How This Image Works
 
-This image contains the Python programming language as well as Pip.
+This image contains the Python programming language as well as pip, pipenv, and poetry.
 The interpreter is provided via pyenv allowing you to change the Python version during a build as well.
 
 ### Variants
 
-This image has a Node.js variant.
 Variant images typically contain the same base software, but with a few additional modifications.
+
+#### Node.js
+
 The Node.js variant is the same Python image but with Node.js also installed.
 The Node.js variant can be used by appending `-node` to the end of an existing `cimg/python` tag.
+
+```yaml
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.7-node
+    steps:
+      - checkout
+      - run: python --version
+      - run: node --version
+```
 
 ### Tagging Scheme
 
@@ -203,10 +216,10 @@ We encourage [issues](https://github.com/CircleCI-Public/cimg-python/issues) to 
 
 ## Additional Resources
 
-[CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.  
+[CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.
 [CircleCI Configuration Reference](https://circleci.com/docs/2.0/configuration-reference/#section=configuration) - From CircleCI Docs, the configuration reference page is one of the most useful pages we have.
-It will list all of the keys and values supported in `.circleci/config.yml`.  
-[Docker Docs](https://docs.docker.com/) - For simple projects this won't be needed but if you want to dive deeper into learning Docker, this is a great resource.  
+It will list all of the keys and values supported in `.circleci/config.yml`.
+[Docker Docs](https://docs.docker.com/) - For simple projects this won't be needed but if you want to dive deeper into learning Docker, this is a great resource.
 
 
 ## License
