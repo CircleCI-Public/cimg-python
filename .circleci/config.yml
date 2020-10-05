@@ -4,7 +4,7 @@ workflows:
   main:
     jobs:
       - build:
-          context: orb-publishing
+          context: cimg-publishing
 
 jobs:
   build:
@@ -15,7 +15,9 @@ jobs:
       - setup_remote_docker
       - run:
           name: "Build Docker Images"
-          command: ./build-images.sh
+          command: |
+            ./build-images.sh
+            echo 'export DOCKER_PASS=$DOCKER_TOKEN' >> $BASH_ENV
       - deploy:
           name: "Publish Docker Images (master branch only)"
           command: |
