@@ -78,7 +78,7 @@ jobs:
 
 The browsers variant is the same Python image but with Node.js, Java, Selenium, and browser dependencies pre-installed via apt.
 The browsers variant can be used by appending `-browser` to the end of an existing `cimg/python` tag.
-The browsers variant is designed to work in conjunction with the [CircleCI Browser Tools orb](https://circleci.com/developer/orbs/orb/circleci/browser-tools)
+The browsers variant is designed to work in conjunction with the [CircleCI Browser Tools orb](https://circleci.com/developer/orbs/orb/circleci/browser-tools).
 You can use the orb to install a version of Google Chrome and/or Firefox into your build. The image contains all of the supporting tools needed to use both the browser and it’s driver.
 
 ```yaml
