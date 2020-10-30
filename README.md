@@ -72,7 +72,7 @@ jobs:
       - run: node --version
 ```
 
-#### Browsers Variant
+#### Browsers
 
 **The browsers variants are currently in beta. Please feel free to contribute to the conversation [here](https://discuss.circleci.com/t/next-gen-convenience-image-browsers-variant-beta/37794).**
 
