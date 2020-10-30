@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/%%PARENT%%:2020.09
+FROM cimg/base:2020.09
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
+RUN pyenv install 3.9.0 && pyenv global 3.9.0
 
 RUN python --version && \
 	pip --version && \

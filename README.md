@@ -10,10 +10,11 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-python.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-python) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-python/master/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/python)](https://hub.docker.com/r/cimg/python) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
 
-***This image is in beta and is designed to supercede the original CircleCI Python image, `circleci/python`.***
+***This image is designed to supercede the legacy CircleCI Python image, `circleci/python`.***
 
 `cimg/python` is a Docker image created by CircleCI with continuous integration builds in mind.
-Each tag contains a complete Python version via pyenv. pip, pipenv, and poetry are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+Each tag contains a complete Python version via pyenv.
+pip, pipenv, and poetry are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
 
 ## Table of Contents
@@ -35,14 +36,14 @@ For example:
 jobs:
   build:
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run: python --version
 ```
 
 In the above example, the CircleCI Python Docker image is used as the primary container.
-More specifically, the tag `3.7` is used meaning the version of Python will be Python v3.7.
+More specifically, the tag `3.8` is used meaning the version of Python will be Python v3.8.
 You can now use Python within the steps for this job.
 
 
@@ -106,9 +107,9 @@ cimg/python:<python-version>[-variant]
 ```
 
 `<python-version>` - The version of Python to use.
-This can be a full SemVer point release (such as `3.7.7`) or just the minor release (such as `3.7`).
+This can be a full SemVer point release (such as `3.8.1`) or just the minor release (such as `3.8`).
 If you use the minor release tag, it will automatically point to future patch updates as they are released by the Python project.
-For example, the tag `3.7` points to Python v3.7.7 now, but when the next release comes out, it will point to Python v3.7.6.
+For example, the tag `3.8` points to Python v3.8.5 now, but when the next release comes out, it will point to Python v3.8.6.
 
 `[-variant]` - Variant tags, if available, can optionally be used.
 For example, the Node.js variant could be used like this: `cimg/python:3.7-node`.
