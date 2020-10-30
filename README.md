@@ -72,7 +72,9 @@ jobs:
       - run: node --version
 ```
 
-#### Browser Variant
+#### Browsers Variant
+
+**The browsers variants are currently in beta. Please feel free to contribute to the conversation [here](https://discuss.circleci.com/t/next-gen-convenience-image-browsers-variant-beta/37794).**
 
 The browsers variant is the same Python image but with Node.js, Java, Selenium, and browser dependencies pre-installed via apt.
 The browsers variant can be used by appending `-browser` to the end of an existing `cimg/python` tag.
