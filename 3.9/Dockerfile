@@ -5,7 +5,9 @@ FROM cimg/base:2020.12
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
-	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH
+	PATH=/home/circleci/.poetry/bin:$PATH
+
+COPY pyenv.bashrc /home/circleci/.pyenv.bashrc
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -30,7 +32,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		xz-utils \
 		zlib1g-dev && \
 	curl https://pyenv.run | bash && \
-	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+        echo "source /home/circleci/.pyenv.bashrc >> /home/circleci/.bashrc"
 
 RUN pyenv install 3.9.1 && pyenv global 3.9.1
 
