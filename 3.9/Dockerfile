@@ -5,7 +5,7 @@ FROM cimg/base:2020.12
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
-	PATH=/home/circleci/.poetry/bin:$PATH
+	PATH=/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH
 
 COPY pyenv.bashrc /home/circleci/.pyenv.bashrc
 
@@ -33,14 +33,16 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		zlib1g-dev && \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-        echo "source /home/circleci/.pyenv.bashrc >> /home/circleci/.bashrc"
+        echo "source /home/circleci/.pyenv.bashrc" >> /home/circleci/.bashrc
 
 RUN pyenv install 3.9.1 && pyenv global 3.9.1
 
-RUN python --version && \
+RUN source /home/circleci/.pyenv.bashrc && \
+	python --version && \
 	pip --version && \
 	# This installs pipenv at the latest version, currently 2020.6.2
 	pip install pipenv wheel
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN source /home/circleci/.pyenv.bashrc && \
+	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
