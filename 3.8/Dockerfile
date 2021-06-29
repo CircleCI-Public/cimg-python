@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.8.10 && pyenv global 3.8.10
+RUN pyenv install 3.8.11 && pyenv global 3.8.11
 
 RUN python --version && \
 	pip --version && \
