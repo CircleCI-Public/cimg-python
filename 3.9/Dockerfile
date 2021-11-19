@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.9.9 && pyenv global 3.9.9
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.9.9 && pyenv global 3.9.9
 
 RUN python --version && \
 	pip --version && \
@@ -40,4 +40,4 @@ RUN python --version && \
 	pip install pipenv wheel
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
