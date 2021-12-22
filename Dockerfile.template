@@ -28,6 +28,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		tk-dev \
 		wget \
 		xz-utils \
+		rustc \
 		zlib1g-dev && \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
