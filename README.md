@@ -8,7 +8,7 @@
 	<h3>A Continuous Integration focused Python Docker image built to run on CircleCI</h3>
 </div>
 
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-python.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-python) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-python/master/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/python)](https://hub.docker.com/r/cimg/python) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
+[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-python.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-python) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-python/master/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/python)](https://hub.docker.com/r/cimg/python) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images) [![Repository](https://img.shields.io/badge/github-README-brightgreen)](https://github.com/CircleCI-Public/cimg-python)
 
 ***This image is designed to supercede the legacy CircleCI Python image, `circleci/python`.***
 
