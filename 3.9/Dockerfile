@@ -1,6 +1,8 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2021.10
+# Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
+
+FROM cimg/base:2022.01
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
@@ -32,7 +34,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.9.9 && pyenv global 3.9.9
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.9.10 && pyenv global 3.9.10
 
 RUN python --version && \
 	pip --version && \
