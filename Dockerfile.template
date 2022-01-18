@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
 
 RUN python --version && \
 	pip --version && \
