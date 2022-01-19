@@ -202,7 +202,7 @@ All that would need to be done after that is:
 - review the PR
 - merge the PR
 
-The master branch build will then publish a release.
+The main branch build will then publish a release.
 
 ### Incorporating Changes
 
