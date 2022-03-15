@@ -19,6 +19,7 @@ jobs:
           version: "20.10.11"
       - run:
           name: "Build Docker Images"
+          no_output_timeout: 2h
           command: |
             ./build-images.sh
             echo 'export DOCKER_PASS=$DOCKER_TOKEN' >> $BASH_ENV
