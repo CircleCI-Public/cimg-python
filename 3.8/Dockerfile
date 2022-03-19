@@ -1,6 +1,8 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/base:2021.07
+# Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
+
+FROM cimg/base:2022.01
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
@@ -32,7 +34,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pyenv install 3.8.12 && pyenv global 3.8.12
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.13 && pyenv global 3.8.13
 
 RUN python --version && \
 	pip --version && \
@@ -40,4 +42,4 @@ RUN python --version && \
 	pip install pipenv wheel
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
