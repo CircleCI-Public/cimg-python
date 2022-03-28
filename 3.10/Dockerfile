@@ -34,7 +34,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl https://pyenv.run | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.10.3 && pyenv global 3.10.3
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.10.4 && pyenv global 3.10.4
 
 RUN python --version && \
 	pip --version && \
