@@ -8,3 +8,4 @@ workflows:
     jobs:
       - cimg-orb/build-and-deploy:
           context: cimg-publishing
+          no_output_timeout: 2h
