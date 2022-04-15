@@ -1,11 +1,10 @@
 version: 2.1
 
 orbs:
-  cimg-orb: circleci/cimg-orb@0.0.2
+  cimg-orb: circleci/cimg-orb@dev:alpha
 
 workflows:
   main:
     jobs:
       - cimg-orb/build-and-deploy:
           context: cimg-publishing
-          no_output_timeout: 2h
