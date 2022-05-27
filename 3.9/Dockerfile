@@ -2,7 +2,7 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-FROM cimg/base:2022.01
+FROM cimg/base:edge
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
