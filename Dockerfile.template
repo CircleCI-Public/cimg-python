@@ -38,6 +38,8 @@ RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv ins
 
 RUN python --version && \
 	pip --version && \
+	pip install --upgrade pip && \
+	pip --version && \
 	# This installs pipenv at the latest version, currently 2020.6.2
 	pip install pipenv wheel
 
