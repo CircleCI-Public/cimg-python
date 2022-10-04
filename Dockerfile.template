@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		wget \
 		xz-utils \
 		zlib1g-dev && \
-	curl https://pyenv.run | bash && \
+	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
