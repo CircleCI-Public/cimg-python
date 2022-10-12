@@ -30,7 +30,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		libxmlsec1-dev \
 		llvm \
 		make \
-		python-openssl \
+		python3-openssl \
 		tk-dev \
 		wget \
 		xz-utils \
