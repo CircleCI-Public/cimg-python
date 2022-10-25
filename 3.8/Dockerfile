@@ -2,13 +2,16 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-FROM cimg/base:2022.08
+# By policy, the base image tag should be a quarterly tag unless there's a 
+# specific reason to use a different one. This means January, April, July, or 
+# October.
+FROM cimg/base:2022.10
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.8.14
+	PYTHON_VERSION=3.8.15
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -27,15 +30,15 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		libxmlsec1-dev \
 		llvm \
 		make \
-		python-openssl \
+		python3-openssl \
 		tk-dev \
 		wget \
 		xz-utils \
 		zlib1g-dev && \
-	curl https://pyenv.run | bash && \
+	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.14 && pyenv global 3.8.14
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.15 && pyenv global 3.8.15
 
 RUN python --version && \
 	pip --version && \
@@ -45,4 +48,4 @@ RUN python --version && \
 	pip install pipenv wheel
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+RUN curl -sSL https://install.python-poetry.org | python -
