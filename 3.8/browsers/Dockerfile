@@ -11,6 +11,9 @@ RUN curl -sSL -o selenium-server-standalone-${SELENIUM_VER}.jar "https://seleniu
     rm selenium-server-standalone-${SELENIUM_VER}.jar
 
 RUN sudo apt-get update && \
+	sudo apt-get install --yes --no-install-recommends \
+		xvfb \
+	&& \
 
     # Install Java only if it's not already available
     # Java is installed for Selenium
