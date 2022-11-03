@@ -46,8 +46,9 @@ RUN python --version && \
 	pip --version && \
 	pip install --upgrade pip && \
 	pip --version && \
-	# This installs pipenv at the latest version, currently 2020.6.2
-	pip install pipenv wheel
+	# This installs pipenv at the latest version
+	pip install pipenv wheel && \
+	pipenv --version
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
