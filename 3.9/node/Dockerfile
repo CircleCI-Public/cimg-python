@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/python:3.9.15
+FROM cimg/python:3.9.16
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 

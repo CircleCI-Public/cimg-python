@@ -13,7 +13,8 @@ LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.9.15
+	PYTHON_VERSION=3.9.16 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.9.16
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -40,14 +41,15 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.9.15 && pyenv global 3.9.15
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.9.16 && pyenv global 3.9.16
 
 RUN python --version && \
 	pip --version && \
 	pip install --upgrade pip && \
 	pip --version && \
-	# This installs pipenv at the latest version, currently 2020.6.2
-	pip install pipenv wheel
+	# This installs pipenv at the latest version
+	pip install pipenv wheel && \
+	pipenv --version
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
