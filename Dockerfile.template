@@ -2,12 +2,11 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-# By policy, the base image tag should be a quarterly tag unless there's a 
-# specific reason to use a different one. This means January, April, July, or 
+# By policy, the base image tag should be a quarterly tag unless there's a
+# specific reason to use a different one. This means January, April, July, or
 # October.
 
-# NOTE: This uses the November image due to an OpenSSL CVE. We will resume using quarterly images in Q1
-FROM cimg/%%PARENT%%:2022.11
+FROM cimg/%%PARENT%%:2023.01
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
