@@ -48,7 +48,9 @@ RUN python --version && \
 	pip --version && \
 	# This installs pipenv at the latest version
 	pip install pipenv wheel && \
-	pipenv --version
+	pipenv --version && \
+	# Install pipx
+	pip install --user pipx
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
