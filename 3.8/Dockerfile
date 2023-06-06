@@ -2,19 +2,18 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-# By policy, the base image tag should be a quarterly tag unless there's a 
-# specific reason to use a different one. This means January, April, July, or 
+# By policy, the base image tag should be a quarterly tag unless there's a
+# specific reason to use a different one. This means January, April, July, or
 # October.
 
-# NOTE: This uses the November image due to an OpenSSL CVE. We will resume using quarterly images in Q1
-FROM cimg/base:2022.11
+FROM cimg/base:2023.01
 
 LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.8.16 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.8.16
+	PYTHON_VERSION=3.8.17-and-v3.7.17-and \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.8.17-and-v3.7.17-and
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -41,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.16 && pyenv global 3.8.16
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.17-and-v3.7.17-and && pyenv global 3.8.17-and-v3.7.17-and
 
 RUN python --version && \
 	pip --version && \
@@ -49,7 +48,9 @@ RUN python --version && \
 	pip --version && \
 	# This installs pipenv at the latest version
 	pip install pipenv wheel && \
-	pipenv --version
+	pipenv --version && \
+	# Install pipx
+	pip install --user pipx
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
