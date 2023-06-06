@@ -11,7 +11,6 @@ LATEST_VERSION=0
 VERSION_LIST=$(pyenv install --list | sed 's/^  //' | grep '^[3]' | grep --invert-match 'dev\|a\|b')
 
 getPythonVersionLatest() {
-
     LATEST_VERSION=$(echo "$VERSION_LIST" | tail -1)
 }
 
@@ -24,10 +23,12 @@ processLastVersion() {
     directoryCheck "$majorMinor" "$SEARCH_TERM"
     if [[ $(eval echo $?) == 0 ]]; then
         echo "$LATEST_VERSION is valid"
+        VERSIONS+='v'
         VERSIONS+=$LATEST_VERSION
         VERSIONS+=' '
     fi
 }
+# test
 
 while [ "${PROCESSED_LATEST_VERSION}" != "3.7" ]
 do
@@ -37,7 +38,7 @@ done
 
 if [ "$VERSIONS" != "" ]; then
     echo "generating cimg-python for versions: $VERSIONS"
-    ./shared/release.sh "$VERSIONS"
+    ./shared/release.sh $VERSIONS
 else
     echo "No changes"
 fi
