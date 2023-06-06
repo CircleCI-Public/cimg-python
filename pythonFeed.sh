@@ -11,7 +11,7 @@ LATEST_VERSION=0
 VERSION_LIST=$(pyenv install --list | sed 's/^  //' | grep '^[3]' | grep --invert-match 'dev\|a\|b')
 
 getPythonVersionLatest() {
-  
+
     LATEST_VERSION=$(echo "$VERSION_LIST" | tail -1)
 }
 
