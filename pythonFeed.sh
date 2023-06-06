@@ -24,6 +24,7 @@ processLastVersion() {
     directoryCheck "$majorMinor" "$SEARCH_TERM"
     if [[ $(eval echo $?) == 0 ]]; then
         echo "$LATEST_VERSION is valid"
+        VERSIONS+='v'
         VERSIONS+=$LATEST_VERSION
         VERSIONS+=' '
     fi
@@ -37,7 +38,7 @@ done
 
 if [ "$VERSIONS" != "" ]; then
     echo "generating cimg-python for versions: $VERSIONS"
-    ./shared/release.sh "$VERSIONS"
+    ./shared/release.sh $VERSIONS
 else
     echo "No changes"
 fi
