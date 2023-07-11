@@ -15,7 +15,9 @@ ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PYTHON_VERSION=%%VERSION_FULL%% \
 	PIPENV_DEFAULT_PYTHON_VERSION=%%VERSION_FULL%%
 
-RUN sudo apt-get update && sudo apt-get install -y \
+USER root
+
+RUN apt-get update && apt-get install -y \
 		build-essential \
 		ca-certificates \
 		curl \
@@ -38,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		xz-utils \
 		zlib1g-dev && \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
-	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install %%MAIN_VERSION%% && pyenv global %%MAIN_VERSION%%
 
@@ -54,3 +56,5 @@ RUN python --version && \
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
+
+USER circleci
