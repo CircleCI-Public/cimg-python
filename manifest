@@ -4,4 +4,3 @@ repository=python
 parent=base
 variants=(node browsers)
 namespace=cimg
-arm64=1
