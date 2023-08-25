@@ -12,8 +12,8 @@ LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.8.17 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.8.17
+	PYTHON_VERSION=3.8.18 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.8.18
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -40,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.17 && pyenv global 3.8.17
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.8.18 && pyenv global 3.8.18
 
 RUN python --version && \
 	pip --version && \
