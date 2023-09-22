@@ -111,6 +111,19 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: Continue if Dockerfiles changed
+          command: |
+            CHANGE="false"
+            source GEN-CHECK
+            for version in "${GEN_CHECK[@]}"; do
+              directory="$(echo "$version" | cut -d '.' -f1).$(echo "$version" | cut -d '.' -f2)"
+              defaultBranch=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
+              git diff --quiet "$defaultBranch" -- "$directory" || CHANGE="true"
+            done
+            if [[ $CHANGE != "true" ]]; then
+              circleci step halt
+            fi
       - cimg/build-images:
           docker-namespace: <<parameters.docker-namespace>>
           docker-repository: <<parameters.docker-repository>>
