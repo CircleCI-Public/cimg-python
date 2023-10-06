@@ -9,7 +9,6 @@ parameters:
   cron:
     type: boolean
     default: false
-
 workflows:
   automated-wf:
       when: << pipeline.parameters.cron >>
