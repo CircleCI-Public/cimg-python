@@ -8,7 +8,7 @@
 
 FROM cimg/%%PARENT%%:2023.07
 
-LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
+LABEL maintainer="CircleCI Images Team <images@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
