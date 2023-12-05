@@ -24,7 +24,6 @@ processLastVersion() {
     directoryCheck "$majorMinor" "$SEARCH_TERM"
     if [[ $(eval echo $?) == 0 ]]; then
         echo "$LATEST_VERSION is valid"
-        VERSIONS+='v'
         VERSIONS+=$LATEST_VERSION
         VERSIONS+=' '
     fi
