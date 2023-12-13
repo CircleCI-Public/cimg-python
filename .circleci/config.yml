@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  cimg: circleci/cimg@0.5.2
+  cimg: circleci/cimg@0.6.0
   slack: circleci/slack@4.12.1
   gh: circleci/github-cli@2.2.0
 
@@ -9,13 +9,14 @@ parameters:
   cron:
     type: boolean
     default: false
+
 workflows:
   automated-wf:
-      when: << pipeline.parameters.cron >>
-      jobs:
-        - check-feed:
-            context:
-              - cimg-publishing
+    when: << pipeline.parameters.cron >>
+    jobs:
+      - check-feed:
+          context:
+            - cimg-publishing
   main-wf:
     when:
       not: << pipeline.parameters.cron >>
@@ -25,9 +26,6 @@ workflows:
           docker-namespace: ccitest
           docker-repository: python
           publish-branch: main
-          s3_write_arn: arn:aws:iam::483285841698:role/cpe-images-bucket-write
-          s3_read_arn: arn:aws:iam::483285841698:role/cpe-images-bucket-read
-          sign_arn: arn:aws:iam::483285841698:role/cpe-kms-sign
           context: cimg-publishing
           post-steps:
             - slack/notify:
@@ -39,6 +37,7 @@ workflows:
                 event: fail
                 mentions: "@images"
                 template: basic_fail_1
+
 jobs:
   check-feed:
     docker:
@@ -47,8 +46,7 @@ jobs:
       - checkout
       - run:
           name: Update pyenv
-          command:
-            pyenv update
+          command: pyenv update
       - add_ssh_keys:
           fingerprints:
             - "f8:07:0f:f6:b5:eb:57:ae:be:4d:2f:2d:be:70:8f:ff"
@@ -81,7 +79,7 @@ jobs:
           token: IMAGE_BOT_TOKEN
       - run:
           name: Run version update script
-          command: |
+          command: |-
             sudo chmod +x pythonFeed.sh
             git submodule update --init --recursive
             ./pythonFeed.sh
