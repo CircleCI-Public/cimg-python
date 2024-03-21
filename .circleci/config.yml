@@ -18,6 +18,8 @@ workflows:
           image: cimg/python
           tag: "3.11"
           context:
+            - slack-notification-access-token
+            - slack-cimg-notifications
             - cpe-image-bot-github-creds
   main-wf:
     when:
@@ -32,7 +34,10 @@ workflows:
             branches:
               ignore:
                 - main
-          context: cimg-docker-image-building
+          context: 
+            - slack-notification-access-token
+            - slack-cimg-notifications
+            - cimg-docker-image-building
           post-steps:
             - slack/notify:
                 branch_pattern: main
@@ -48,6 +53,8 @@ workflows:
               only:
                 - main
           context:
+            - slack-notification-access-token
+            - slack-cimg-notifications
             - cimg-docker-image-building
             - cimg-docker-image-publishing
           post-steps:
