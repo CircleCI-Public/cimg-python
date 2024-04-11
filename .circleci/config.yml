@@ -14,9 +14,12 @@ workflows:
     when: << pipeline.parameters.cron >>
     jobs:
       - cimg/update:
+          pre-steps:
+            - run: echo 'export PYENV_ROOT=/home/circleci/.pyenv' >> "$BASH_ENV"
+            - run: echo 'export PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:$PATH' >> "$BASH_ENV"
+            - run: curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash
+
           update-script: pythonFeed.sh
-          image: cimg/python
-          tag: "3.11"
           context:
             - slack-notification-access-token
             - slack-cimg-notifications
@@ -34,7 +37,7 @@ workflows:
             branches:
               ignore:
                 - main
-          context: 
+          context:
             - slack-notification-access-token
             - slack-cimg-notifications
             - cimg-docker-image-building
