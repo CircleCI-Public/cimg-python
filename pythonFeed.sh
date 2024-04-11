@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Update to latest pyenv version
+curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash
+
 if [ -f shared/automated-updates.sh ]; then
   source shared/automated-updates.sh
 else
