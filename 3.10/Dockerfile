@@ -6,14 +6,14 @@
 # specific reason to use a different one. This means January, April, July, or
 # October.
 
-FROM cimg/base:2023.07
+FROM cimg/base:2024.02
 
-LABEL maintainer="Community/Partner Engineering <community-partner@circleci.com>"
+LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.10.13 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.10.13
+	PYTHON_VERSION=3.10.14 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.10.14
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -40,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.10.13 && pyenv global 3.10.13
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.10.14 && pyenv global 3.10.14
 
 RUN python --version && \
 	pip --version && \
