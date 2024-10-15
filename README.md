@@ -39,14 +39,14 @@ For example:
 jobs:
   build:
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.14
     steps:
       - checkout
       - run: python --version
 ```
 
 In the above example, the CircleCI Python Docker image is used as the primary container.
-More specifically, the tag `3.8` is used meaning the version of Python will be Python v3.8.
+More specifically, the tag `3.14` is used meaning the version of Python will be Python v3.14.
 You can now use Python within the steps for this job.
 
 
@@ -68,7 +68,7 @@ The Node.js variant can be used by appending `-node` to the end of an existing `
 jobs:
   build:
     docker:
-      - image: cimg/python:3.7-node
+      - image: cimg/python:3.13-node
     steps:
       - checkout
       - run: python --version
@@ -89,7 +89,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/python:3.7-browsers
+      - image: cimg/python:3.13-browsers
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -109,12 +109,12 @@ cimg/python:<python-version>[-variant]
 ```
 
 `<python-version>` - The version of Python to use.
-This can be a full SemVer point release (such as `3.8.1`) or just the minor release (such as `3.8`).
+This can be a full SemVer point release (such as `3.14.0`) or just the minor release (such as `3.14`).
 If you use the minor release tag, it will automatically point to future patch updates as they are released by the Python project.
-For example, the tag `3.8` points to Python v3.8.5 now, but when the next release comes out, it will point to Python v3.8.6.
+For example, the tag `3.14` points to Python v3.14.0 now, but when the next release comes out, it will point to Python v3.14.1.
 
 `[-variant]` - Variant tags, if available, can optionally be used.
-For example, the Node.js variant could be used like this: `cimg/python:3.7-node`.
+For example, the Node.js variant could be used like this: `cimg/python:3.13-node`.
 
 
 ## Development
@@ -154,19 +154,19 @@ git clone --recurse-submodules git@github.com:CircleCI-Public/cimg-python.git
 ### Generating Dockerfiles
 
 Dockerfiles can be generated for a specific Python version using the `gen-dockerfiles.sh` script.
-For example, to generate the Dockerfile for Python v3.7.7, you would run the following from the root of the repo:
+For example, to generate the Dockerfile for Python v3.13.8, you would run the following from the root of the repo:
 
 ```bash
-./shared/gen-dockerfiles.sh 3.7.7
+./shared/gen-dockerfiles.sh 3.13.8
 ```
 
-The generated Dockerfile will be located at `./3.7/Dockefile`.
+The generated Dockerfile will be located at `./3.13/Dockefile`.
 To build this image locally and try it out, you can run the following:
 
 ```bash
-cd 3.7
-docker build -t test/python:3.7.7 .
-docker run -it test/python:3.7.7 bash
+cd 3.13
+docker build -t test/python:3.13.8 .
+docker run -it test/python:3.13.8 bash
 ```
 
 ### Building the Dockerfiles
