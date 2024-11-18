@@ -54,3 +54,6 @@ RUN python --version && \
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
+
+# This installs uv at the latest version.
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
