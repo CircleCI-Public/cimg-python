@@ -14,7 +14,7 @@
 
 `cimg/python` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a complete Python version via pyenv.
-pip, pipenv, and poetry are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+pip, pipenv, poetry and uv are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
 ## Support Policy
 
@@ -52,7 +52,7 @@ You can now use Python within the steps for this job.
 
 ## How This Image Works
 
-This image contains the Python programming language as well as pip, pipenv, and poetry.
+This image contains the Python programming language as well as pip, pipenv, poetry and uv.
 The interpreter is provided via pyenv allowing you to change the Python version during a build as well.
 
 ### Variants
