@@ -12,8 +12,8 @@ LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.12.9 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.12.9
+	PYTHON_VERSION=3.12.10 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.12.10
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -40,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.12.9 && pyenv global 3.12.9
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.12.10 && pyenv global 3.12.10
 
 RUN python --version && \
 	pip --version && \
@@ -54,3 +54,6 @@ RUN python --version && \
 
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://install.python-poetry.org | python -
+
+# This installs uv at the latest version.
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
