@@ -12,8 +12,8 @@ LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.9.23 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.9.23
+	PYTHON_VERSION=3.9.24 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.9.24
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -40,7 +40,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.9.23 && pyenv global 3.9.23
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.9.24 && pyenv global 3.9.24
 
 RUN python --version && \
 	pip --version && \
