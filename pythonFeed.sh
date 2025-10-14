@@ -26,9 +26,10 @@ processLastVersion() {
       # shellcheck disable=SC2154
     directoryCheck "$majorMinor" "$SEARCH_TERM"
     if [[ $(eval echo $?) == 0 ]]; then
-        echo "$LATEST_VERSION is valid"
-        VERSIONS+=$LATEST_VERSION
-        VERSIONS+=' '
+        # echo "$LATEST_VERSION is valid"
+        # VERSIONS+=$LATEST_VERSION
+        # VERSIONS+=' '
+        generateVersionString "$newVersion"
     fi
 }
 
@@ -37,10 +38,10 @@ do
     getPythonVersionLatest
     processLastVersion
 done
-
-if [ "$VERSIONS" != "" ]; then
-    echo "generating cimg-python for versions: $VERSIONS"
-    ./shared/release.sh $VERSIONS
+echo "${vers[*]}"
+if [ -n "${vers[*]}" ]; then
+    echo "generating cimg-python for versions: ${vers[*]}"
+    ./shared/release.sh "${vers[*]}"
 else
     echo "No changes"
 fi
