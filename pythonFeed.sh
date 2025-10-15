@@ -38,10 +38,10 @@ do
     getPythonVersionLatest
     processLastVersion
 done
-echo "${vers[*]}"
+
 if [ -n "${vers[*]}" ]; then
     echo "generating cimg-python for versions: ${vers[*]}"
-    ./shared/release.sh "${vers[*]}"
+    ./shared/release.sh "${vers[@]}"
 else
     echo "No changes"
 fi
