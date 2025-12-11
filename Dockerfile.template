@@ -36,7 +36,9 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		tk-dev \
 		wget \
 		xz-utils \
-		zlib1g-dev && \
+		zlib1g-dev \
+		zstd \
+		libzstd-dev && \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
