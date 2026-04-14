@@ -42,7 +42,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env MAKEFLAGS="-j1" PYTHON_CONFIGURE_OPTS="--enable-shared --without-mimalloc" pyenv install 3.14.4 && pyenv global 3.14.4
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.14.4 && pyenv global 3.14.4
 
 RUN python --version && \
 	pip --version && \
