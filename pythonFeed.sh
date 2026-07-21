@@ -20,7 +20,8 @@ getPythonVersionLatest() {
 
 processLastVersion() {
     PROCESSED_LATEST_VERSION=$(echo "$LATEST_VERSION" | cut -f1,2 -d'.')
-    VERSION_LIST=$(echo "$VERSION_LIST" | grep -v "$PROCESSED_LATEST_VERSION")
+    ESCAPED_LATEST_VERSION=$(echo "$PROCESSED_LATEST_VERSION" | sed 's/\./\\./g')
+    VERSION_LIST=$(echo "$VERSION_LIST" | grep -v "^${ESCAPED_LATEST_VERSION}\.")
     generateVersions "$LATEST_VERSION"
     generateSearchTerms "PYTHON_VERSION" "$majorMinor"/Dockerfile '\'
       # shellcheck disable=SC2154
