@@ -14,11 +14,11 @@ workflows:
     when: << pipeline.parameters.cron >>
     jobs:
       - cimg/update:
+          resource_class: small.gen3
           pre-steps:
             - run: echo 'export PYENV_ROOT=/home/circleci/.pyenv' >> "$BASH_ENV"
             - run: echo 'export PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:$PATH' >> "$BASH_ENV"
             - run: curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash
-
           update-script: pythonFeed.sh
           context:
             - slack-notification-access-token
@@ -66,7 +66,7 @@ jobs:
   build_and_deploy:
     machine:
       image: ubuntu-2404:current
-    resource_class: 2xlarge+.gen2
+    resource_class: 2xlarge+.gen3
     steps:
       - run:
           name: Install latest QEMU
