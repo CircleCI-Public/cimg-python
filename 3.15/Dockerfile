@@ -6,14 +6,14 @@
 # specific reason to use a different one. This means January, April, July, or
 # October.
 
-FROM cimg/base:2026.10-26.04
+FROM cimg/base:2026.10-22.04
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
 ENV PYENV_ROOT=/home/circleci/.pyenv \
 	PATH=/home/circleci/.pyenv/shims:/home/circleci/.pyenv/bin:/home/circleci/.poetry/bin:$PATH \
-	PYTHON_VERSION=3.15.0 \
-	PIPENV_DEFAULT_PYTHON_VERSION=3.15.0
+	PYTHON_VERSION=3.15.1 \
+	PIPENV_DEFAULT_PYTHON_VERSION=3.15.1
 
 RUN sudo apt-get update && sudo apt-get install -y \
 		build-essential \
@@ -22,7 +22,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		git \
 		libbz2-dev \
 		liblzma-dev \
-		libncurses-dev \
+		libncurses5-dev \
+		libncursesw5-dev \
 		libreadline-dev \
 		libffi-dev \
 		libsqlite3-dev \
@@ -41,7 +42,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	curl -sSL "https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer" | bash && \
 	sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.15.0 && pyenv global 3.15.0
+RUN env PYTHON_CONFIGURE_OPTS="--enable-shared --enable-optimizations" pyenv install 3.15.1 && pyenv global 3.15.1
 
 RUN python --version && \
 	pip --version && \
