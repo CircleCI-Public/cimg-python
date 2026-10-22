@@ -6,7 +6,7 @@
 # specific reason to use a different one. This means January, April, July, or
 # October.
 
-FROM cimg/base:2026.10-22.04
+FROM cimg/base:2026.10-26.04
 
 LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
@@ -22,7 +22,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		git \
 		libbz2-dev \
 		liblzma-dev \
-		libncurses-dev
+		libncurses-dev \
 		libreadline-dev \
 		libffi-dev \
 		libsqlite3-dev \
