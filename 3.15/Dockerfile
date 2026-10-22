@@ -22,8 +22,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		git \
 		libbz2-dev \
 		liblzma-dev \
-		libncurses5-dev \
-		libncursesw5-dev \
+		libncurses-dev
 		libreadline-dev \
 		libffi-dev \
 		libsqlite3-dev \
