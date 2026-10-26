@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM cimg/python:3.15.1-node
+FROM cimg/python:3.15.2-node
 
 LABEL maintainer="CircleCI Community & Partner Engineering Team <community-partner@circleci.com>"
 
@@ -52,8 +52,8 @@ RUN echo 'Package: *' | sudo tee -a /etc/apt/preferences.d/firefox.pref && \
 # regularly updated thing. Instead, if this version of Chrome isn't what the
 # end user wants they should install a different version via the Browser Tools
 # Orb.
-RUN wget -q -O - "https://dl.google.com/linux/linux_signing_key.pub" | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list && \
+RUN wget -q -O - "https://dl.google.com/linux/linux_signing_key.pub" | sudo apt-key add - && \
+	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list && \
 	sudo apt-get update && \
 	sudo apt-get install google-chrome-stable && \
 	sudo rm -rf /var/lib/apt/lists/*
